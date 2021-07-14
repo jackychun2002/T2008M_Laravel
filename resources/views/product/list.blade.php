@@ -25,7 +25,7 @@
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <a href="{{url("/categories/new")}}" class="btn btn-outline-primary">Thêm mới</a>
+                                <a href="{{url("/products/new")}}" class="btn btn-outline-primary">Thêm mới</a>
                             </div>
                         </div>
                     </div>
@@ -36,19 +36,30 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Image</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Category</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($categories as $cat)
+                            @foreach($products as $item)
                             <tr>
-                                <td>{{$cat->id}}</td>
-                                <td>{{$cat->name}}</td>
-                                <td>{{$cat->created_at}}</td>
-                                <td>{{$cat->updated_at}}</td>
-                                <td><a href="{{url("/categories/edit",["id"=>$cat->id])}}">Điều chỉnh</a></td>
+                                <td>{{$item->__get("id")}}</td>
+                                <td>{{$item->__get("name")}}</td>
+                                <td>{{$item->__get("image")}}</td>
+                                <td>{{$item->__get("description")}}</td>
+                                <td>{{$item->__get("price")}}</td>
+                                <td>{{$item->__get("qty")}}</td>
+{{--                                <td>{{$item->__get("category_name")}}</td>--}}
+                                <td>{{$item->Category->__get("name")}}</td>
+                                <td>{{$item->__get("created_at")}}</td>
+                                <td>{{$item->__get("updated_at")}}</td>
+                                <td><a href="{{url("/categories/edit",["id"=>$item->id])}}">Điều chỉnh</a></td>
                             </tr>
                             @endforeach
                             </tbody>
