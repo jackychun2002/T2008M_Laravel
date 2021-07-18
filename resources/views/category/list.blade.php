@@ -36,6 +36,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Products Total</th>
                                 <th>Created at</th>
                                 <th>Updated at</th>
                                 <th></th>
@@ -46,6 +47,7 @@
                             <tr>
                                 <td>{{$cat->id}}</td>
                                 <td>{{$cat->name}}</td>
+                                <td>{{($cat->products_count)}}</td>
                                 <td>{{$cat->created_at}}</td>
                                 <td>{{$cat->updated_at}}</td>
                                 <td><a href="{{url("/categories/edit",["id"=>$cat->id])}}">Điều chỉnh</a></td>
@@ -55,6 +57,9 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
+                    <div class="card-footer">
+                        {!! $categories->links("vendor.pagination.default") !!}
+                    </div>
                 </div>
             </div>
         </section>

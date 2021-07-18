@@ -13,4 +13,8 @@ class Category extends Model
     protected $fillable = ["name"];
     // pulic $timestamps = true neu mac dinh la true,nghia la tu dong cap nhat gia tri
     //cho 2 cot created_at va updated_at
+
+    public function Products(){
+        return $this->hasMany(Product::class); // tra ve 1 collection cac object product co quan he
+    }
 }

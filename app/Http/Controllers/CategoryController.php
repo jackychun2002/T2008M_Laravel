@@ -13,9 +13,12 @@ class CategoryController extends Controller
     public function all(){
         //liet ke tat ca category trong Db
 //        $categories = DB::table("categories")->get();
-//        var_dump($categories);die("a");
-        $categories = Category::all(); // tra ve 1 array cac object category
+//        $categories = Category::all(); // tra ve 1 array cac object category
+//        select count(name),category_id form product group by category_id
+//        $categories = Category::withCount("Products")->get(); // neu chi can dem so luong
 //        dd($categories);
+//        var_dump($categories);die("a");
+        $categories = Category::withCount("Products")->paginate(20);//phan trang
         return view("category.list",[
             "categories"=>$categories
         ]);
