@@ -28,3 +28,7 @@ Route::post('/categories/update/{id}',[CategoryController::class,"update"]);
 Route::get('/products',[ProductController::class,"all"]);
 Route::get('/products/new',[ProductController::class,"form"]);
 Route::post('/products/save',[ProductController::class,"save"]);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
